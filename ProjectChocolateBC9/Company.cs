@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ProjectChocolateBC9
 {
     class Company
-    {
+    {   //dim lewww
         public string BrandName {get; private set;}
         private List<Factory> factories;
         private List<Store> stores;
