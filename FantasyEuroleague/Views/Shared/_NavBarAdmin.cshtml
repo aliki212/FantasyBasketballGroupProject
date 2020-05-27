@@ -1,0 +1,25 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class ="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img src="~/Content/images/euroleague_basketball_logo.png" alt="logo" id="fantasyLogo" class="img-logo" />
+            </a>
+            @*@Html.ActionLink("Euroleague Fantasy Betting", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Edit Players", "Index", "Player")</li>
+                @*<li><a href="@Url.Action("Teams", "Home")">Teams</a></li>*@
+                <li>@Html.ActionLink("Season Games", "Index", "Game")</li>
+                <li>@*@Html.ActionLink("Fantasy Team", "Index", "FantasyTeam")*@</li>
+                <li>@Html.ActionLink("Create Data", "CreateData", "Home")</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

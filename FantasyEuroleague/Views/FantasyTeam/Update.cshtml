@@ -1,0 +1,885 @@
+﻿@model FantasyEuroleague.ViewModels.FantasyTeamViewModel
+
+@{
+    ViewBag.Title = "Update Fantasy Team";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            @*Fantasy Game Heading*@
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-bar">
+                        <div>
+                            <p class="team-name">Team Name:&nbsp;@Model.Name</p>
+                        </div>
+
+                        <div>
+                            <p class="round-score">Round Score:&nbsp;@Model.RoundScore Pts</p>
+                        </div>
+
+                        <div>
+                            <p class="total-score">Total Score:&nbsp;@Model.TotalScore Pts</p>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+
+            @*Fantasy Team Budget bar*@
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="value-bar-update">
+                        <div>
+                            <p class="label">Remaining Budget&nbsp;</p>
+                            <span class="remaining-budget" data-remaining-budget="@Model.RemainingBudget">
+                                &euro;@Model.RemainingBudget m
+                            </span>
+                        </div>
+                        <div>
+                            <p class="label">Team Value&nbsp;</p>
+                            <span class="team-value" data-current-value="@Model.CurrentValue">
+                                &euro;@Model.CurrentValue m
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    @*Basketball Court Table Title*@
+                    <div class="line-up">
+                        <div class="title">
+                            Starting Line-up
+                        </div>
+
+                        <div class="selections-count">
+                            <div>
+                                <span class="players-selected-count">8/8</span>
+                            </div>
+                            <div class="info-sign">
+                                <i class="glyphicon glyphicon-info-sign"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="fantasy-team">
+
+                        @*First Row*@
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="line">
+                                    <div class="player">
+                                        <div>
+                                            <div class="position-name">
+                                                Point Guard
+                                            </div>
+
+                                            <div class="player-cell">
+                                                <div id="guard-pos-1" class="cell-content guard">
+                                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="line">
+                                    <div class="player">
+                                        <div>
+                                            <div class="position-name">
+                                                Shooting Guard
+                                            </div>
+
+                                            <div class="player-cell">
+                                                <div id="guard-pos-2" class="cell-content guard">
+                                                    <i class="glyphicon glyphicon-plus-sign add-player-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @*Second Row*@
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="line">
+                                    <div class="player">
+                                        <div>
+                                            <div class="position-name">
+                                                Small Forward
+                                            </div>
+
+                                            <div class="player-cell">
+                                                <div id="forward-pos-1" class="cell-content forward">
+                                                    <i class="glyphicon glyphicon-plus-sign add-player-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="line">
+                                    <div class="player">
+                                        <div>
+                                            <div class="position-name">
+                                                Power Forward
+                                            </div>
+
+                                            <div class="player-cell">
+                                                <div id="forward-pos-2" class="cell-content forward">
+                                                    <i class="glyphicon glyphicon-plus-sign add-player-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*Third Row*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line">
+                                    <div class="player">
+                                        <div>
+                                            <div class="position-name">
+                                                Center
+                                            </div>
+
+                                            @*Brand Name Watermark (Optional)*@
+                                            <div class="brand-name">
+                                                <div>
+                                                    Fantasy
+                                                </div>
+
+                                                <div>
+                                                    Basketball
+                                                </div>
+                                            </div>
+                                            <div class="player-cell">
+                                                <div id="center-pos-1" class="cell-content center">
+                                                    <i class="glyphicon glyphicon-plus-sign add-player-icon"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*Fourth Row*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line">
+                                    <div class="player">
+                                        <div>
+                                            <div class="position-name">
+                                                Guard
+                                            </div>
+
+                                            <div class="player-cell">
+                                                <div id="guard-pos-3" class="cell-content guard">
+                                                    <i class="glyphicon glyphicon-plus-sign add-player-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @*Fifth Row*@
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="line">
+                                    <div class="player">
+                                        <div>
+                                            <div class="position-name">
+                                                Forward
+                                            </div>
+
+                                            <div class="player-cell">
+                                                <div id="forward-pos-3" class="cell-content forward">
+                                                    <i class="glyphicon glyphicon-plus-sign add-player-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="line">
+                                    <div class="player">
+                                        <div>
+                                            <div class="position-name">
+                                                Center
+                                            </div>
+
+                                            <div class="player-cell">
+                                                <div id="center-pos-2" class="cell-content center">
+                                                    <i class="glyphicon glyphicon-plus-sign add-player-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="create-team-button">
+                        <button type="button" class="btn btn-secondary clear-btn">ROLLBACK</button>
+                        <button type="button" class="btn btn-success create-btn">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="row">
+                @*Search Bar*@
+                <div class="col-md-12">
+                    <div class="js-filter-search">
+                        <input type="text" id="mySearchText" placeholder="Search...">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @*Position Filter*@
+                <div class="col-md-6">
+                    <div class="filter-row-1">
+                        <select name="filter-position" class="js-filter-positions">
+                            <option selected="true" value="" disabled>--Position--</option>
+
+                            <option value="Guard"> Guard </option>
+                            <option value="Forward"> Forward </option>
+                            <option value="Center"> Center </option>
+                        </select>
+                    </div>
+                </div>
+
+                @*Team Filter*@
+                <div class="col-md-6">
+                    <div class="filter-row-1">
+                        <select name="filter-team" class="js-filter-teams">
+                            <option selected="true" value="" disabled>--Team--</option>
+
+                            <option value="ALBA Berlin"> ALBA Berlin </option>
+                            <option value="Anadolu Efes Istanbul"> Anadolu Efes Istanbul</option>
+                            <option value="AX Armani Exchange Milan"> AX Armani Exchange Milan </option>
+                            <option value="Crvena Zvezda mts Belgrade"> Crvena Zvezda mts Belgrade </option>
+                            <option value="FC Barcelona"> FC Barcelona </option>
+                            <option value="FC Bayern Munich"> FC Bayern Munich </option>
+                            <option value="Fenerbahce Beko Istanbul"> Fenerbahce Beko Istanbul </option>
+                            <option value="Khimki Moscow Region"> Khimki Moscow Region </option>
+                            <option value="KIROLBET Baskonia Vitoria-Gasteiz"> KIROLBET Baskonia Vitoria-Gasteiz </option>
+                            <option value="LDLC ASVEL Villeurbanne"> LDLC ASVEL Villeurbanne </option>
+                            <option value="Maccabi FOX Tel Aviv"> Maccabi FOX Tel Aviv </option>
+                            <option value="Olympiacos Piraeus"> Olympiacos Piraeus </option>
+                            <option value="Panathinaikos OPAP Athens"> Panathinaikos OPAP Athens </option>
+                            <option value="Real Madrid"> Real Madrid </option>
+                            <option value="Valencia Basket"> Valencia Basket </option>
+                            <option value="Zalgiris Kaunas"> Zalgiris Kaunas </option>
+                            <option value="Zenit St Petersburg">Zenit St Petersburg</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @*SortBy Filter*@
+                <div class="col-md-6">
+                    <div class="filter-row-2">
+                        <select name="filter-sortBy" class="js-filter-sortBy">
+                            <option selected="true" value="" disabled>--Sort By--</option>
+
+                            <option value="Price"> Price </option>
+                            <option value="Total Points"> Total Points (TOT) </option>
+                        </select>
+                    </div>
+                </div>
+
+                @*Order Button*@
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-default js-order">
+                        Order<i class="glyphicon glyphicon-sort-by-attributes"></i>
+                        <i class="glyphicon glyphicon-sort-by-attributes-alt hidden"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                @*DataTable*@
+                <div class="col-md-12">
+                    <table id="fantasyPlayers" class="table table-bordered">
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modal taken from: https://getbootstrap.com/docs/3.4/javascript/ -->
+    <div class="modal" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-title"><h3>Updated Line-up</h3></div>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        You can update your team changing <strong> at most 3 players</strong> of your initial squad.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="storePlayerIds" class="hidden" data-player-ids='@Model.PlayerIds[0],@Model.PlayerIds[1],@Model.PlayerIds[2],@Model.PlayerIds[3],@Model.PlayerIds[4],@Model.PlayerIds[5],@Model.PlayerIds[6],@Model.PlayerIds[7]'></div>
+    <div id="teamId" class="hidden" data-team-id="@Model.Id"></div>
+</div>
+
+@section  scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#fantasyPlayers").DataTable({
+
+                "dom": 't',
+
+                ajax: {
+                    url: "/api/players/",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, player) {
+                            return (
+                                '<div class="player-info">'
+                                + '<a class = "player-name" href = "/player/details/' + player.ID + '">' + player.Fullname + '</a>'
+                                + '<div class = "player-position">'
+                                + '<span class = "' + player.Profile.Position + '"><span class="player-data-label">Pos:</span>' + player.Profile.Position + '</span>'
+                                + '<span class = "' + player.Price + '"><span class="player-data-label"> Value:</span> &euro;' + player.Price + 'm' + '</span>'
+                                + '<span class = "' + player.FantasyPoints + '"><span class="player-data-label"> Avg:</span> ' + player.FantasyPoints + '</span>'
+                                + '</div >'
+                                + '<div class = "player-team"><span class= "' + player.Team.Name + '"><span class="player-data-label">Team:</span>' + player.Team.Name + '</span></div>'
+                                + '</div>'
+                                + '<div class="add-player-icon"><i class="glyphicon glyphicon-plus-sign"></i><i class="glyphicon glyphicon-remove-sign hidden"></i></div>'
+                            );
+                        }
+                    }
+                ],
+                initComplete: function () {
+                    init();
+                },
+                scrollY: "600px",
+                scrollCollapse: false,
+                lengthChange: false,
+                paging: false,
+                info: false,
+                ordering: false,
+                oLanguage: { "sSearch": "" }
+            })
+
+            /*--------------------------Global Variables Section--------------------------*/
+            const maximumChosenGuards = 3;
+            const maximumChosenForwards = 3;
+            const maximumChosenCenters = 2;
+            const fantasyTeamRoster = 8;
+            const maximumNumberOfChanges = 3;
+            let fantasyTeam = { Id: "", playerIds: [] };
+
+            let remainingBudget = parseFloat($("span.remaining-budget").attr("data-remaining-budget").replace(",","."));
+            let teamValue = parseFloat($("span.team-value").attr("data-current-value").replace(",", "."));
+            let budget = { teamValue: teamValue, remainingBudget: remainingBudget };
+
+            /*--------------------------Modals Section--------------------------*/
+
+            $("div.info-sign").on("click", function () {
+                $("#infoModal").modal("show");
+            })
+
+           /*--------------------------Initialization Section--------------------------*/
+
+            let playerIds = $("#storePlayerIds").attr("data-player-ids").split(",");
+
+            function init() {
+                $.each($("#fantasyPlayers td"), function (index, value) {
+
+                    let href = $(value).find("div.player-info a").attr("href").split("/");
+                    let Id = href[3];
+
+                    if (playerIds.includes(Id)) {
+
+                        let target = $(value).find("i.glyphicon.glyphicon-plus-sign");
+                        let position = $(value).find("div.player-position span:nth-child(1)").attr('class');
+
+                        let div;
+                        if (position === "Guard")
+                            div = findFreePosition(position.toLowerCase());
+                        else if (position === "Forward")
+                            div = findFreePosition(position.toLowerCase());
+                        else if (position === "Center")
+                            div = findFreePosition(position.toLowerCase());
+                        else
+                            return false; // if the move is not allowed exit
+
+                        $(value).prependTo(div);
+                        modifyCellContentFormat(target, div.attr("id"));
+                    }
+                });
+                $("#fantasyPlayers td").css({ "pointer-events": "none", "opacity": "0.5" });
+            }
+
+            /*--------------------------Select, Deselect Players, Clear, Create Buttons Section--------------------------*/
+
+            function moveTdFromDataTableToCourt(event) {
+
+                let target = $(event.target);
+                let position = target.parents("td").find("div.player-position span:nth-child(1)").attr('class');
+
+                let div;
+                if (position === "Guard")
+                    div = findFreePosition(position.toLowerCase());
+                else if (position === "Forward")
+                    div = findFreePosition(position.toLowerCase());
+                else if (position === "Center")
+                    div = findFreePosition(position.toLowerCase());
+                else
+                    return false; // if the move is not allowed exit
+
+                target.parents("td").prependTo(div);
+                modifyCellContentFormat(target, div.attr("id"));
+            }
+
+            // The element will be moved to the fisrt available position (Fill in the fisrt gap, the second...)
+            function findFreePosition(position) {
+                let div = $("div." + position).filter(function (index) {
+                    return $("td", this).length === 0;
+                }).eq(0);
+
+                // The first div that has not td child
+                return div;
+            }
+
+            function modifyCellContentFormat(target, divDestinationId) {
+                $("#" + divDestinationId + " > i.glyphicon.glyphicon-plus-sign").addClass("hidden"); // Div's css changed
+                target.toggleClass("hidden");
+                target.siblings("i.glyphicon.glyphicon-remove-sign").toggleClass("hidden");
+                $("#" + divDestinationId).css({ "justify-content": "center", "background-color": "rgb(255, 255, 255)" }); // Div's css changed
+                target.parent("div.add-player-icon").css({ "display": "inline-block", "position": "inherit", "margin-left": "15px" });
+                target.parents("td").css("z-index", 1);
+            }
+
+            function getGuards(htmlElement) {
+                let guards = $(htmlElement).filter(function (index) {
+                    return $("div.player-position span:nth-child(1)", this).attr('class') === "Guard";
+                })
+                return guards;
+            }
+
+            function getForwards(htmlElement) {
+                let forwards = $(htmlElement).filter(function (index) {
+                    return $("div.player-position span:nth-child(1)", this).attr('class') === "Forward";
+                })
+                return forwards;
+            }
+
+            function getCenters(htmlElement) {
+                let centers = $(htmlElement).filter(function (index) {
+                    return $("div.player-position span:nth-child(1)", this).attr('class') === "Center";
+                })
+                return centers;
+            }
+
+            function disableOverBudgetTds() {
+                $("#fantasyPlayers td").filter(function (index) {
+                    return parseFloat($(this).find("div.player-position span:nth-child(2)").attr('class')) > budget.remainingBudget;
+                }).css({ "pointer-events": "none", "opacity": "0.5" });
+            }
+
+            function disableTdsWithFilledPosition(position) {
+
+                let guardsSelected = getGuards("div.fantasy-team td");
+                let forwardsSelected = getForwards("div.fantasy-team td");
+                let centersSelected = getCenters("div.fantasy-team td");
+
+                // Front-End Checks
+                if (position === "Guard" && guardsSelected.length === maximumChosenGuards)
+                    getGuards("#fantasyPlayers td").css({ "pointer-events": "none", "opacity": "0.5" });
+                else if (position === "Forward" && forwardsSelected.length === maximumChosenForwards)
+                    getForwards("#fantasyPlayers td").css({ "pointer-events": "none", "opacity": "0.5" });
+                else if (position === "Center" && centersSelected.length === maximumChosenCenters)
+                    getCenters("#fantasyPlayers td").css({ "pointer-events": "none", "opacity": "0.5" });
+                else
+                    return false;
+            }
+
+            function enableTdsWithOpenPosition(position) {
+
+                let guardsSelected = getGuards("div.fantasy-team td");
+                let forwardsSelected = getForwards("div.fantasy-team td");
+                let centersSelected = getCenters("div.fantasy-team td");
+
+                // Front-End Checks
+                if (position === "Guard" && guardsSelected.length === maximumChosenGuards)
+                    getGuards("#fantasyPlayers td").css({ "pointer-events": "auto", "opacity": "1.0" });
+                else if (position === "Forward" && forwardsSelected.length === maximumChosenForwards)
+                    getForwards("#fantasyPlayers td").css({ "pointer-events": "auto", "opacity": "1.0" });
+                else if (position === "Center" && centersSelected.length === maximumChosenCenters)
+                    getCenters("#fantasyPlayers td").css({ "pointer-events": "auto", "opacity": "1.0" });
+                else
+                    return false;
+            }
+
+            function setPlayersCounter() {
+                let numberOfPlayersSelected = $("div.fantasy-team td").length;
+                $("span.players-selected-count").html(numberOfPlayersSelected + "/8");
+            }
+
+            function calculateCurrentBudget(budget, playerValue) {
+
+                budget.teamValue += playerValue;
+                budget.remainingBudget -= playerValue;
+
+                budget.teamValue = parseFloat(budget.teamValue.toFixed(2));
+                budget.remainingBudget = parseFloat(budget.remainingBudget.toFixed(2));
+                $("span.team-value").html("&euro;" + budget.teamValue + "m");
+                $("span.remaining-budget").html("&euro;" + budget.remainingBudget + "m");
+            }
+
+            // Select a player from dataTable (taking advantage of event propagation)
+            $(document).on("click", "div.add-player-icon i.glyphicon-plus-sign", function (event) {
+
+                moveTdFromDataTableToCourt(event);
+                setPlayersCounter();
+
+                let target = $(event.target);
+                let position = target.parents("td").find("div.player-position span:nth-child(1)").attr('class');
+                let playerValue = parseFloat(target.parents("td").find("div.player-position span:nth-child(2)").attr('class'));
+
+                // Order matters
+                calculateCurrentBudget(budget, playerValue);
+                disableOverBudgetTds();
+                disableTdsWithFilledPosition(position);
+            });
+
+            // Deselect a player from Basketball Court (taking advantage of event propagation)
+            $(document).on("click", "div.add-player-icon i.glyphicon-remove-sign", function (event) {
+
+                let td = $(event.target).parents("td");
+                let div = td.parent();
+                let position = td.find("div.player-position span:nth-child(1)").attr('class');
+                let playerValue = -parseFloat(td.find("div.player-position span:nth-child(2)").attr('class'));
+
+                // Order matters
+                calculateCurrentBudget(budget, playerValue);
+                enableTdsWithOpenPosition(position);
+
+                let player = createPlayers(td)[0];
+                td.remove();
+                resetCellContentFormat(div);
+                table.row.add(player).draw();
+
+                setPlayersCounter();
+            });
+
+            // Recover the css format of cell content inside Basketball Court Table
+            function resetCellContentFormat(celldiv) {
+                celldiv.children("i.glyphicon.glyphicon-plus-sign").removeClass("hidden");
+                celldiv.css("background-color", "rgba(243, 208, 166, 0)");
+            }
+
+            // RollBack Button (Recover the initial fantasy team)
+            $(".clear-btn").on("click", function () {
+
+                $("#fantasyPlayers td").css({ "pointer-events": "auto", "opacity": "1.0" });
+                let tds = $("div.fantasy-team td");
+                let divs = tds.parent();
+
+                let players = createPlayers(tds);
+                tds.remove();
+                $.each(divs, function (index, value) {
+                    resetCellContentFormat($(value));
+                });
+                table.rows.add(players).draw();
+
+                init();
+                $("#fantasyPlayers td").css({ "pointer-events": "none", "opacity": "0.5" });
+                setPlayersCounter();
+
+                // Reset budget properties
+                budget.teamValue = teamValue;
+                budget.remainingBudget = remainingBudget;
+                $("span.remaining-budget").html("&euro;" + budget.remainingBudget + "m");
+                $("span.team-value").html("&euro;" + budget.teamValue + "m");
+            })
+
+            function validNumberOfChanges() {
+                let numberOfChanges = 0;
+                let tds = $("div.fantasy-team td");
+
+                $.each(tds, function (index, value) {
+                    let href = $(value).find("div.player-info a").attr("href").split("/");
+                    let Id = href[3]
+                    if (!playerIds.includes(Id))
+                        numberOfChanges++;
+                });
+                return((numberOfChanges > maximumNumberOfChanges) ? false : true); 
+            }
+
+            // Update Button (Submit)
+            $(".create-btn").on("click", function () {
+
+                let tds = $("div.fantasy-team td");
+
+                if (tds.length !== fantasyTeamRoster) {
+                    toastr.error("You cannot create a team with less than 8 players!");
+                    return false;
+                } else if (!validNumberOfChanges()) {
+                    toastr.error("You cannot update a team making more than three changes!")
+                    return false;
+                } else {                   
+                    $.each(tds, function (index, value) {
+                        let href = $(value).find("div.player-info a").attr("href").split("/");
+                        fantasyTeam.playerIds[index] = href[3];
+                    });
+                }
+
+                fantasyTeam.Id = $("#teamId").attr("data-team-id");
+
+                $.ajax({
+                    url: "/FantasyTeam/Edit",
+                    method: "post",
+                    data: fantasyTeam
+                })
+                    .done(function () {
+                        toastr.success("You have just updated your team!");
+                        fantasyTeam = { Id: "", playerIds: [] };
+                    })
+                    .fail(function () {
+                        toastr.error("Fantasy Team update failed!");
+                    });
+            })
+
+            /*--------------------------Filters, SortBy, Ordering & Searching Section--------------------------*/
+
+            // Searching (using dataTable's built in searching function)
+            $('#mySearchText').on('keyup', function () {
+                table.search(this.value, true, false).draw();
+            });
+
+            // Ordering
+            let timesClicked = 1;
+            $(".js-order").on("click", function () {
+
+                $(".glyphicon.glyphicon-sort-by-attributes").toggleClass("hidden");
+                $(".glyphicon.glyphicon-sort-by-attributes-alt").toggleClass("hidden");
+
+                if (timesClicked % 2 === 1)
+                    sortByFilter("desc");
+                else
+                    sortByFilter("asc");
+
+                timesClicked++;
+            });
+
+            // Filtering
+            $("div.filter-row-1 select").on("change", function () {
+
+                $("#fantasyPlayers td").removeClass("hide");
+
+                let positionOption = $("select.js-filter-positions option:selected").val();
+                let teamOption = $("select.js-filter-teams option:selected").val();
+                let sortByOption = $("select.js-filter-sortBy option:selected").val();
+
+                filterActions(positionOption, teamOption);
+
+                // If the filter is active from a previous call, keep it active
+                if (sortByOption !== "")
+                    sortByFilter("asc");
+            });
+
+            // Position & Team Filters
+            function filterActions(position, team) {
+
+                $("#fantasyPlayers td").filter(function () {
+
+                    if (team === "" || position === "")
+                        return ($("div.player-position span", this).attr('class') !== position
+                            && $("div.player-team span", this).attr('class') !== team);
+                    else
+                        return ($("div.player-position span", this).attr('class') !== position
+                            || $("div.player-team span", this).attr('class') !== team);
+
+                }).addClass("hide");
+            }
+
+            $("div.filter-row-2 select").change(function () {
+                sortByFilter("asc");
+            });
+
+            // Redraw the dataTable with user's options sorted
+            function sortByFilter(order) {
+                sortedPlayers = getSortedPlayers(order);
+
+                // If SortingActions have not been run (disabledTds) exit
+                if (sortedPlayers === false)
+                    return false;
+
+                table
+                    .rows($("#fantasyPlayers td").not(".hide"))
+                    .remove()
+                    .rows.add(sortedPlayers)
+                    .draw();
+            }
+
+            // Create the list of sorted players
+            function getSortedPlayers(order) {
+
+                let sortByOption = $("select.js-filter-sortBy option:selected").val();
+                sortedTds = sortingActions(sortByOption, order);
+
+                // If SortingActions have not been run (disabledTds) exit
+                if (sortedTds === false)
+                    return false;
+
+                return createPlayers(sortedTds);
+            }
+
+            // Create an array of player objects so as to be possible the initialization of dataTable
+            function createPlayers(tds) {
+
+                let players = [];
+                $.each(tds, function (index, value) {
+                    let player = { Team: {}, Profile: {} };
+
+                    player.Fullname = $(value).find("div.player-info a").text();
+                    // href has this format: [href="/player/details/18"]
+                    let href = $(value).find("div.player-info a").attr("href").split("/");
+                    player.ID = href[3];
+                    player.Profile.Position = $(value).find("div.player-position span:nth-child(1)").attr('class');
+                    player.Price = $(value).find("div.player-position span:nth-child(2)").attr('class');
+                    player.FantasyPoints = $(value).find("div.player-position span:nth-child(3)").attr('class');
+                    player.Team.Name = $(value).find("div.player-team span:nth-child(1)").attr('class');
+
+                    players.push(player);
+                });
+
+                return players;
+            }
+
+            // Choose what sorting function you want to call
+            function sortingActions(sortByOption, order = "asc") {
+
+                let disabledTds = $("#fantasyPlayers td:not(.hide)[style*='pointer-events: none']");
+
+                // If there is even one disabled element do not sort.
+                if (disabledTds.length !== 0)
+                    return false;
+
+                // If there is ordering by Price or FP sort by them, otherwise sort alphabetically
+                let sortedTds;
+                if (sortByOption === "Price" && order === "asc")
+                    sortedTds = $("#fantasyPlayers td").not(".hide").sort(sortByPriceAsc);
+                else if (sortByOption === "Price" && order === "desc")
+                    sortedTds = $("#fantasyPlayers td").not(".hide").sort(sortByPriceDesc);
+                else if (sortByOption === "Total Points" && order === "asc")
+                    sortedTds = $("#fantasyPlayers td").not(".hide").sort(sortByPointsAsc);
+                else if (sortByOption === "Total Points" && order === "desc")
+                    sortedTds = $("#fantasyPlayers td").not(".hide").sort(sortByPointsDesc);
+                else if (sortByOption === "" && order === "asc")
+                    sortedTds = $("#fantasyPlayers td").not(".hide").sort(sortByAlphaAsc);
+                else
+                    sortedTds = $("#fantasyPlayers td").not(".hide").sort(sortByAlphaDesc);
+
+                return sortedTds;
+            }
+
+            // Sorting By Price, FP, Alphabetically in ASC, DESC way
+            function sortByPriceAsc(td1, td2) {
+
+                lowPrice = parseFloat($(td1).find("div.player-position span:nth-child(2)").attr('class'));
+                highPrice = parseFloat($(td2).find("div.player-position span:nth-child(2)").attr('class'));
+                return (lowPrice > highPrice) ? 1 : -1;
+            }
+
+            function sortByPriceDesc(td1, td2) {
+
+                lowPrice = parseFloat($(td1).find("div.player-position span:nth-child(2)").attr('class'));
+                highPrice = parseFloat($(td2).find("div.player-position span:nth-child(2)").attr('class'));
+                return (lowPrice > highPrice) ? -1 : 1;
+            }
+
+            function sortByPointsAsc(td1, td2) {
+
+                lowPts = parseFloat($(td1).find("div.player-position span:nth-child(3)").attr('class'));
+                highPts = parseFloat($(td2).find("div.player-position span:nth-child(3)").attr('class'));
+                return (lowPts > highPts) ? 1 : -1;
+            }
+
+            function sortByPointsDesc(td1, td2) {
+
+                lowPts = parseFloat($(td1).find("div.player-position span:nth-child(3)").attr('class'));
+                highPts = parseFloat($(td2).find("div.player-position span:nth-child(3)").attr('class'));
+                return (lowPts > highPts) ? -1 : 1;
+            }
+
+            function sortByAlphaAsc(td1, td2) {
+
+                name1 = $(td1).find("div.player-info a").text();
+                name2 = $(td2).find("div.player-info a").text();
+                return (name1 > name2) ? 1 : -1;
+            }
+
+            function sortByAlphaDesc(td1, td2) {
+
+                name1 = $(td1).find("div.player-info a").text();
+                name2 = $(td2).find("div.player-info a").text();
+                return (name1 > name2) ? -1 : 1;
+            }
+        });
+    </script>
+}
+
+
+

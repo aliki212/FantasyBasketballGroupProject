@@ -1,0 +1,44 @@
+﻿@model IEnumerable<FantasyEuroleague.Models.EightPlayerTeam>
+
+@{
+    ViewBag.Title = "MyTeams";
+    Layout = "~/Views/Shared/_LayoutW.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<header class="masthead7">
+    <div class="container body-content players-f">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 justify-content-center"><h2>My Fantasy Teams </h2></div>
+            <div class="col-md-4"></div>
+        </div>
+        <table id="teams" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Coach</th>
+                    <th>Team Name</th>
+                    <th>Current Value</th>
+                    <th>Total Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var team in Model)
+                {
+                <tr>
+                    <td>@team.User.UserName</td>
+                    <td>@Html.ActionLink(team.Name, "Edit", "FantasyTeam", new { id = team.Id }, null)</td>
+                    <td>@team.CurrentValue</td>
+                    <td>@team.TotalScore</td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</header>
+
+
+
+

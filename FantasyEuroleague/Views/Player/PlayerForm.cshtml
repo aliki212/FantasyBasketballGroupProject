@@ -1,0 +1,140 @@
+﻿@model FantasyEuroleague.ViewModels.PlayerFormViewModel
+
+<h2>New Player</h2>
+@using (Html.BeginForm("Save", "Player"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(p => p.Firstname)
+        @Html.TextBoxFor(p => p.Firstname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Firstname)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Lastname)
+        @Html.TextBoxFor(p => p.Lastname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Lastname)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Profile.Country)
+        @Html.DropDownListFor(p => p.Profile.Country, new SelectList(Enumerable.Empty<SelectListItem>()), new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Profile.Country)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Profile.Position)
+        @Html.EnumDropDownListFor(p => p.Profile.Position, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Profile.Position)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.TeamID)
+        @Html.DropDownListFor(p => p.TeamID, new SelectList(Model.Teams, "ID", "Name"), "--Choose Team--", new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.TeamID)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.FantasyPoints)
+        @Html.TextBoxFor(p => p.FantasyPoints, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.FantasyPoints)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Price)
+        @Html.TextBoxFor(p => p.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Price)
+    </div>
+
+    @Html.HiddenFor(pl => pl.Id)
+    <button id="newPlayer" type="submit" class="btn btn-primary">Save</button>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+
+            $('#TeamID').find('option[value=""]').prop('disabled', true);
+
+            let dropdownNations = $('#Profile_Country');
+            dropdownNations.empty();
+            dropdownNations.append('<option selected="true" disabled>--Choose Nationality--</option>');
+
+
+            // Load the external API
+            const url = 'https://restcountries.eu/rest/v2/all'
+
+            // Populate DropDownList Of Nationalities with Countries 3letter_code (alpha3Code)
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, entry) {
+                    dropdownNations.append($('<option></option>').val(entry.alpha3Code).text(entry.name));
+                });
+            })
+                .done(function () {
+                    // Edit a Player
+                    if ($('#Id').val() !== '0') {
+                        $.ajax({
+                            url: "/api/players/" + $('#Id').val(),
+                            method: "get",
+                            success: function (data) {
+                                $('#Profile_Country > option').each(function (index) {
+                                    if (this.text == data.Profile.Country) {
+                                        dropdownNations.prop('selectedIndex', index);
+                                        return false;
+                                    }
+                                });
+                            }
+                        })
+                    }
+                });
+
+            //Register a Player and his Profile at the same time
+            let viewModel = { Profile: {} };
+
+            $("#newPlayer").click(function (e) {
+                e.preventDefault();
+
+                viewModel.ID = $('#Id').val();
+                viewModel.Firstname = $('#Firstname').val();
+                viewModel.Lastname = $('#Lastname').val();
+                viewModel.Profile.Country3Code = $('#Profile_Country').val();
+                viewModel.Profile.Country = $('#Profile_Country option:selected').text();
+                viewModel.Profile.Position = $('#Profile_Position').val();
+                viewModel.TeamID = $('#TeamID').val();
+
+                // Create Player
+                if ($('#Id').val() === '0') {
+
+                    $.ajax({
+                        url: "/api/players",
+                        method: "post",
+                        data: viewModel
+                    })
+
+                        .done(function () {
+                            toastr.success("A new player has been added!")
+                        })
+                        .fail(function () {
+                            toastr.error("Something went really bad!")
+                        });
+
+                    // Update Player
+                } else {
+
+                    $.ajax({
+                        url: "/api/players/" + $('#Id').val(),
+                        method: "put",
+                        data: viewModel
+                    })
+
+                        .done(function () {
+                            toastr.success("This player has been updated successfully!")
+                        })
+                        .fail(function () {
+                            toastr.error("Something went really bad!")
+                        });
+                }
+            });
+        });
+    </script>
+}
+

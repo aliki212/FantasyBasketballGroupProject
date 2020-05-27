@@ -1,0 +1,88 @@
+﻿@model IEnumerable<FantasyEuroleague.Models.PlayerStat>
+
+<h2>Players Stats</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th colspan="8"></th>
+            <th colspan="3">Rebounds</th>
+            <th colspan="3"></th>
+            <th colspan="2">Blocks</th>
+            <th colspan="2">Fouls</th>
+            <th colspan="1"></th>
+        </tr>
+        <tr>
+            <th>Player</th>
+            <th>Pts</th>
+            <th>2FG</th>
+            <th>2FG(%)</th>
+            <th>3FG</th>
+            <th>3FG(%)</th>
+            <th>FT</th>
+            <th>FT(%)</th>
+            <th>O</th>
+            <th>D</th>
+            <th>Total</th>
+            <th>As</th>
+            <th>St</th>
+            <th>To</th>
+            <th>Fv</th>
+            <th>Ag</th>
+            <th>Cm</th>
+            <th>Rv</th>
+            <th>PIR</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stat in Model)
+        {
+            <tr>
+                <td>@stat.Player.Fullname</td>
+                <td>@stat.Points</td>
+                <td>@stat.TwoPointMade/@stat.TwoPointAttempted</td>
+                <td>@Html.DisplayFor(percentage => stat.TwoPointPercentage)</td>
+                <td>@stat.ThreePointMade/@stat.ThreePointAttempted</td>
+                <td>@Html.DisplayFor(percentage => stat.ThreePointPercentage)</td>
+                <td>@stat.FreeThrowMade/@stat.FreeThrowAttempted</td>
+                <td>@Html.DisplayFor(percentage => stat.FreeThrowPercentage)</td>
+                <td>@stat.OffensiveRebounds</td>
+                <td>@stat.DefensiveRebounds</td>
+                <td>@stat.Rebounds</td>
+                <td>@stat.Assists</td>
+                <td>@stat.Steals</td>
+                <td>@stat.Turnovers</td>
+                <td>@stat.BlocksMade</td>
+                <td>@stat.BlocksReceived</td>
+                <td>@stat.FoulsMade</td>
+                <td>@stat.FoulsReceived</td>
+                <td>@stat.PIR</td>
+            </tr>
+        }
+    <tr>
+        <td><b>Team Stats</b></td>
+        <td>@Model.Sum(st => st.Points)</td>
+        <td>@Model.Sum(st => st.TwoPointMade)/@Model.Sum(st => st.TwoPointAttempted)</td>
+        <td>@(@Model.Sum(st => st.TwoPointAttempted) != 0 ? ((decimal)@Model.Sum(st => st.TwoPointMade) / @Model.Sum(st => st.TwoPointAttempted) * 100).ToString("#00.00") : "0")%</td>
+        <td>@Model.Sum(st => st.ThreePointMade)/@Model.Sum(st => st.ThreePointAttempted)</td>
+        <td>@(@Model.Sum(st => st.ThreePointAttempted) != 0 ? ((decimal)@Model.Sum(st => st.ThreePointMade) / @Model.Sum(st => st.ThreePointAttempted) * 100).ToString("#00.00") : "0")%</td>
+        <td>@Model.Sum(st => st.FreeThrowMade)/@Model.Sum(st => st.FreeThrowAttempted)</td>
+        <td>@(@Model.Sum(st => st.FreeThrowAttempted) != 0 ? ((decimal)@Model.Sum(st => st.FreeThrowMade) / @Model.Sum(st => st.FreeThrowAttempted) * 100).ToString("#00.00") : "0")%</td>
+        <td>@Model.Sum(st=> st.OffensiveRebounds)</td>
+        <td>@Model.Sum(st => st.DefensiveRebounds)</td>
+        <td>@Model.Sum(st => st.Rebounds)</td>
+        <td>@Model.Sum(st => st.Assists)</td>
+        <td>@Model.Sum(st => st.Steals)</td>
+        <td>@Model.Sum(st => st.Turnovers)</td>
+        <td>@Model.Sum(st => st.BlocksMade)</td>
+        <td>@Model.Sum(st => st.BlocksReceived)</td>
+        <td>@Model.Sum(st => st.FoulsMade)</td>
+        <td>@Model.Sum(st => st.FoulsReceived)</td>
+        <td>@Model.Sum(st => st.PIR)</td>
+    </tr>
+    </tbody>
+
+</table>
+
+
+

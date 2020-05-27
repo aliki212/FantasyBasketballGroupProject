@@ -1,0 +1,78 @@
+﻿@model FantasyEuroleague.Models.IndexViewModel
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>ViewBag.Title.</h2>
+
+@using (Html.BeginForm("Update", "User"))
+{
+    @Html.AntiForgeryToken()
+    <h4>Edit your account.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+
+    <button>@Html.ActionLink("Delete", "Delete", "User", new { id = Model.UserId }, htmlAttributes: new { title = "Delete" })</button>
+
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.FirstName, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.LastName, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.DateOfBirth, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.DateOfBirth, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.DateOfBirth)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.IdentityPapersNumber, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.IdentityPapersNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.IdentityPapersNumber)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.PrimaryResidence, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.PrimaryResidence, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.PrimaryResidence)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.Street, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.Street, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Street)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.Town, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.Town, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Town)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.PostalCode, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.PostalCode, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.PostalCode)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.Wallet, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(u => u.Wallet, new { @class = "form-control" })
+
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Update" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

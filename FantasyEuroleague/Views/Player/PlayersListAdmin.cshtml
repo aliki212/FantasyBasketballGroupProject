@@ -1,0 +1,119 @@
+﻿@model IEnumerable<FantasyEuroleague.Models.Player>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutW.cshtml";
+}
+
+
+<header class="masthead4">
+    <div class="container body-content players-f">
+        <h2>Players</h2>
+        <p>
+            @Html.ActionLink("Add New Player", "New", "Player", null, new { @class = "btn btn-primary" })
+        </p>
+
+        <table id="players" class="table table-bordered table-f">
+            <thead>
+                <tr>
+                    <th>FullName</th>
+                    <th>Nationality</th>
+                    <th>Position</th>
+                    <th>Team</th>
+                    <th>Fantasy Points</th>
+                    <th>Value</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</header>
+@section  scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#players").DataTable({
+                ajax: {
+                    url: "/api/players/",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, player) {
+                            return "<a href = '/player/details/" + player.ID + "'>" + player.Fullname + "</a>";
+                        }
+                    },
+                    {
+                        data: "Profile.Country3Code"
+                    },
+                    {
+                        data: "Profile.Position"
+                    },
+                    {
+                        data: "Team.Name"
+                    },
+                    {
+                        data: "FantasyPoints"
+                    },
+                    {
+                        data: "Price"
+                    },
+                    {
+                        data: "edit",
+                        render: function (data, type, player) {
+                            return "<a href = '/player/edit/" + player.ID + "'>" + "Edit</a>";
+                        }
+                    },
+                    {
+                        data: "ID",
+                        render: function (data) {
+                            return "<button class='btn btn-primary js-delete' data-player-id=" + data + ">Delete</button>"
+                        }
+                    }
+                ]
+            });
+
+            // Delete Functionality
+            $("#players").on("click", ".js-delete", function () {
+                let button = $(this);
+
+                bootbox.dialog({
+                    title: 'Delete Confirmation',
+                    message: '<p>The Player will be deleted permanently. Are you sure?</p>',
+                    size: 'large',
+                    onEscape: true,
+                    backdrop: true,
+                    buttons: {
+                        no: {
+                            label: 'No',
+                            className: 'btn-default',
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: 'Yes',
+                            className: 'btn-danger',
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/players/" + button.attr("data-player-id"),
+                                    method: "DELETE",
+                                })
+                                    .done(function () {
+                                        table.row(button.parents("tr")).remove().draw();
+                                    })
+                                    .fail(function () {
+                                        alert("Something went really bad");
+                                    });
+                            }
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+}
